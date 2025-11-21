@@ -1,97 +1,50 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Simulasi Tool (Aman) — Demo</title>
-<style>
-  :root{
-    --bg:#0b0b0e;
-    --card:#0f1720;
-    --accent:#7c3aed;
-    --muted:#9aa4b2;
-    --green:#16a34a;
-  }
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef6;background:linear-gradient(180deg,#020617 0%, #07102a 100%);}
-  .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;}
-  /* phone mock */
-  .phone{
-    width:360px;
-    height:720px;
-    border-radius:28px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    box-shadow: 0 18px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-    border:1px solid rgba(255,255,255,0.03);
-    padding:18px;
-    box-sizing:border-box;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    position:relative;
-  }
-  header{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:13px}
-  .screen{flex:1;background:linear-gradient(180deg,#000 0%, #071018 100%);border-radius:12px;padding:18px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
-  .logo{font-weight:700;letter-spacing:2px;color:#fff;margin-bottom:6px}
-  .status{color:var(--muted);font-size:13px;margin-bottom:18px}
-  .big-number{font-family:monospace;color:#dbeafe;background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:8px;font-size:14px;margin-bottom:14px}
-  .btn-row{display:flex;gap:10px;margin-top:8px}
-  button{background:var(--accent);border:none;color:white;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 8px 20px rgba(124,58,237,0.15)}
-  button.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);box-shadow:none}
-  .small{font-size:13px;color:var(--muted)}
-  .tick{
-    width:96px;height:96px;border-radius:999px;border:4px solid rgba(255,255,255,0.06);
-    display:flex;align-items:center;justify-content:center;margin-bottom:12px;
-    transition:all .5s ease;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-  }
-  .tick.ok{border-color:rgba(22,163,74,0.9);box-shadow:0 6px 30px rgba(16,185,129,0.06)}
-  .tick svg{width:52px;height:52px;opacity:.9}
-  .message{font-weight:700;color:#e6eef6;text-align:center;letter-spacing:1px}
-  .sub{color:var(--muted);font-size:13px;margin-top:6px;text-align:center}
-  .progress{width:160px;height:8px;background:rgba(255,255,255,0.03);border-radius:999px;margin-top:12px;overflow:hidden}
-  .bar{height:100%;width:0%;background:linear-gradient(90deg, rgba(124,58,237,0.95), rgba(99,102,241,0.9));transition:width .3s linear}
-  .footer{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:12px}
-  input[type="text"]{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:#fff;outline:none}
-  .topnote{position:absolute;left:12px;top:12px;background:rgba(0,0,0,0.45);color:var(--muted);padding:6px 10px;border-radius:8px;font-size:12px}
-  .disclaimer{font-size:12px;color:#ffecd5;background:rgba(255,69,58,0.06);padding:8px;border-radius:8px;margin-top:10px;border:1px solid rgba(255,69,58,0.06)}
-  /* small screens */
-  @media (max-width:420px){
-    .phone{transform:scale(.95)}
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulasi Kirim WA — Aman</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="wrap">
-    <div class="phone" role="main" aria-label="Simulasi Tool Aman">
-      <div class="topnote">SIMULASI • HANYA DEMO</div>
+    <div class="phone">
+      <div class="topnote">SIMULASI • AMAN</div>
+
       <header>
-        <div class="small">dotzz-sim</div>
+        <div class="small">sim-tool</div>
         <div class="small">github pages</div>
       </header>
 
-      <div class="screen">
+      <main class="screen" role="main" aria-label="Simulasi Kirim WA">
         <div class="logo">BLANK SYSTEM</div>
-        <div class="status">Simulasi kirim pesan — tidak melakukan aksi nyata</div>
+        <div class="status">Simulasi kirim pesan WhatsApp — tidak otomatis mengirim</div>
 
-        <div style="width:100%;max-width:300px">
-          <label class="small" for="phone">Nomor tujuan (contoh):</label>
-          <input id="phone" type="text" placeholder="6281234567890" value="62829334195914" />
+        <div class="form-box">
+          <label class="small" for="phone">Nomor tujuan (contoh: 081234567890)</label>
+          <input id="phone" type="text" placeholder="Masukkan nomor (contoh: 0812... / +628...)" value="081234567890">
+        </div>
+
+        <div class="form-box">
+          <label class="small" for="messageText">Pesan (bisa diedit)</label>
+          <textarea id="messageText" rows="3" placeholder="Assalamualaikum, ini simulasi."></textarea>
         </div>
 
         <div class="tick" id="tick">
-          <!-- check icon (initially hidden) -->
-          <svg id="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 6L9 17L4 12" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
 
         <div class="message" id="message">READY</div>
-        <div class="sub" id="sub">Tekan KIRIM untuk memulai simulasi</div>
+        <div class="sub" id="sub">Tekan KIRIM untuk memulai simulasi. Setelah selesai, WhatsApp akan terbuka dengan pesan terisi.</div>
 
-        <div class="progress" style="display:none" id="progressWrap"><div class="bar" id="bar"></div></div>
+        <div class="progress" id="progressWrap" aria-hidden="true">
+          <div class="bar" id="bar"></div>
+        </div>
 
-        <div class="btn-row" style="margin-top:18px">
-          <button id="sendBtn">KIRIM (Simulasi)</button>
+        <div class="btn-row">
+          <button id="sendBtn">KIRIM (Simulasi & Buka WA)</button>
           <button class="secondary" id="resetBtn">RESET</button>
         </div>
 
@@ -99,85 +52,13 @@
           <div class="small">Status: <span id="stat">idle</span></div>
         </div>
 
-        <div class="disclaimer" style="max-width:300px;margin-top:14px">
-          <strong>Disclaimer:</strong> Ini hanya **simulasi visual** untuk tujuan edukasi / demo. Halaman ini <em>tidak</em> melakukan aksi ke akun, nomor, atau layanan manapun.
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong> Halaman ini hanya <em>mem-facade</em> proses. Setelah simulasi selesai, WhatsApp akan dibuka dengan nomor & pesan terisi — **kamu harus menekan Kirim pada WhatsApp**. Tidak ada pesan dikirim otomatis dari sini.
         </div>
-      </div>
+      </main>
     </div>
   </div>
 
-<script>
-  // Aman: semua aksi hanya memanipulasi tampilan, tidak memanggil API luar
-  const sendBtn = document.getElementById('sendBtn');
-  const resetBtn = document.getElementById('resetBtn');
-  const bar = document.getElementById('bar');
-  const progressWrap = document.getElementById('progressWrap');
-  const message = document.getElementById('message');
-  const sub = document.getElementById('sub');
-  const stat = document.getElementById('stat');
-  const tick = document.getElementById('tick');
-  const phoneInput = document.getElementById('phone');
-  let running = false;
-
-  function startSimulation(){
-    if(running) return;
-    const num = phoneInput.value.trim() || "(tidak diisi)";
-    running = true;
-    stat.textContent = 'running';
-    progressWrap.style.display = 'block';
-    bar.style.width = '0%';
-    message.textContent = 'Mengirim simulasi...';
-    sub.textContent = 'Nomor: ' + num;
-    tick.classList.remove('ok');
-
-    // fake progress steps
-    let p = 0;
-    const step = () => {
-      if(!running) return;
-      p += Math.floor(Math.random()*12)+8; // 8-19
-      if(p >= 100){
-        p = 100;
-        bar.style.width = p + '%';
-        setTimeout(()=> {
-          finishSimulation();
-        }, 500);
-      } else {
-        bar.style.width = p + '%';
-        setTimeout(step, 300 + Math.random()*200);
-      }
-    };
-    setTimeout(step, 250);
-  }
-
-  function finishSimulation(){
-    running = false;
-    stat.textContent = 'done';
-    progressWrap.style.display = 'none';
-    message.textContent = 'BLANK SYSTEM DIKIRIM';
-    sub.textContent = 'Nomor: ' + (phoneInput.value.trim() || '(kosong)');
-    tick.classList.add('ok');
-    // small visual pulse
-    tick.animate([{transform:'scale(0.98)'},{transform:'scale(1)'}],{duration:400,iterations:1});
-  }
-
-  function resetSim(){
-    running = false;
-    stat.textContent = 'idle';
-    progressWrap.style.display = 'none';
-    bar.style.width = '0%';
-    message.textContent = 'READY';
-    sub.textContent = 'Tekan KIRIM untuk memulai simulasi';
-    tick.classList.remove('ok');
-  }
-
-  sendBtn.addEventListener('click', startSimulation);
-  resetBtn.addEventListener('click', resetSim);
-
-  // Accessibility: Enter to send when focus in input
-  phoneInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') startSimulation(); });
-
-  // Prevent accidental drag/drop or form submit
-  window.addEventListener('dragstart', e=>e.preventDefault());
-</script>
+<script src="index.js"></script>
 </body>
-</html>
+  </html>
